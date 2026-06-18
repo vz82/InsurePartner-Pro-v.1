@@ -1,10 +1,10 @@
-using System.Data.SQLite;
+using Microsoft.Data.Sqlite;
 
 namespace InsurancePartnerApp.Data;
 
 public interface IDbConnectionFactory
 {
-    SQLiteConnection CreateConnection();
+    SqliteConnection CreateConnection();
 }
 
 public class DbConnectionFactory : IDbConnectionFactory
@@ -16,8 +16,8 @@ public class DbConnectionFactory : IDbConnectionFactory
         _configuration = configuration;
     }
 
-    public SQLiteConnection CreateConnection()
+    public SqliteConnection CreateConnection()
     {
-        return new SQLiteConnection(_configuration.GetConnectionString("DefaultConnection"));
+        return new SqliteConnection(_configuration.GetConnectionString("DefaultConnection"));
     }
 }
