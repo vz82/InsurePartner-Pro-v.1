@@ -1,0 +1,17 @@
+<svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <!-- Blue background -->
+  <rect width="1024" height="1024" fill="#2c5aa0"/>
+  
+  <!-- Yellow arch at top -->
+  <path d="M 242 180 Q 512 180 782 180 Q 782 380 512 380 Q 242 380 242 180" fill="#f4d35e" stroke="none"/>
+  
+  <!-- Yellow support pillars and base -->
+  <rect x="213" y="458" width="158" height="42" fill="#f4d35e"/>
+  <rect x="653" y="458" width="158" height="42" fill="#f4d35e"/>
+  
+  <rect x="243" y="520" width="100" height="228" fill="#f4d35e"/>
+  <rect x="681" y="520" width="100" height="228" fill="#f4d35e"/>
+  
+  <rect x="213" y="770" width="158" height="72" fill="#f4d35e"/>
+  <rect x="653" y="770" width="158" height="72" fill="#f4d35e"/>
+</svg>
