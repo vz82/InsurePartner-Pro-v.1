@@ -78,11 +78,14 @@ public class PartnerService : IPartnerService
             (first_name, last_name, address, partner_number, croatian_pin, partner_type_id, created_at_utc, created_by_user, is_foreign, external_code, gender)
             VALUES 
             (@FirstName, @LastName, @Address, @PartnerNumber, @CroatianPIN, @PartnerTypeId, @CreatedAtUtc, @CreatedByUser, @IsForeign, @ExternalCode, @Gender)
-            RETURNING id
         ";
         
         partner.CreatedAtUtc = DateTime.UtcNow;
-        return await connection.QuerySingleAsync<int>(sql, partner);
+        await connection.ExecuteAsync(sql, partner);
+        
+        // SQLite: Get the last inserted ID
+        var idSql = "SELECT last_insert_rowid()";
+        return await connection.ExecuteScalarAsync<int>(idSql);
     }
 
     public async Task<bool> UpdatePartnerAsync(Partner partner)

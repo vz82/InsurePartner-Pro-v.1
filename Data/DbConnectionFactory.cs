@@ -1,10 +1,10 @@
-using Npgsql;
+using System.Data.SQLite;
 
 namespace InsurancePartnerApp.Data;
 
 public interface IDbConnectionFactory
 {
-    NpgsqlConnection CreateConnection();
+    SQLiteConnection CreateConnection();
 }
 
 public class DbConnectionFactory : IDbConnectionFactory
@@ -16,8 +16,8 @@ public class DbConnectionFactory : IDbConnectionFactory
         _configuration = configuration;
     }
 
-    public NpgsqlConnection CreateConnection()
+    public SQLiteConnection CreateConnection()
     {
-        return new NpgsqlConnection(_configuration.GetConnectionString("DefaultConnection"));
+        return new SQLiteConnection(_configuration.GetConnectionString("DefaultConnection"));
     }
 }

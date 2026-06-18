@@ -39,10 +39,13 @@ public class PolicyService : IPolicyService
             (partner_id, shelf_number, policy_amount, created_at_utc)
             VALUES 
             (@PartnerId, @ShelfNumber, @PolicyAmount, @CreatedAtUtc)
-            RETURNING id
         ";
         
         policy.CreatedAtUtc = DateTime.UtcNow;
-        return await connection.QuerySingleAsync<int>(sql, policy);
+        await connection.ExecuteAsync(sql, policy);
+        
+        // SQLite: Get the last inserted ID
+        var idSql = "SELECT last_insert_rowid()";
+        return await connection.ExecuteScalarAsync<int>(idSql);
     }
 }
