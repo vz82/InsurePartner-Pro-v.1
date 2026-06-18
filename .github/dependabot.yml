@@ -5,7 +5,14 @@
 
 version: 2
 updates:
-  - package-ecosystem: "dapper", "nbgsql" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  # NuGet packages (covers Dapper, NBGSQL, and other .NET dependencies)
+  - package-ecosystem: "nuget"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
+  # HTML/JavaScript dependencies (if applicable)
+  - package-ecosystem: "npm"
+    directory: "/"
     schedule:
       interval: "weekly"
